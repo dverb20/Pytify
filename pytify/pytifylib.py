@@ -59,6 +59,7 @@ class Pytifylib:
             artist_name = song['artists'][0]['name'][:25]
             song_name = song['name'][:30]
             album_name = song['album']['name'][:30]
+            uri_name = song['uri'][:45]
 
             self._songs[index + 1] = {
                 'href': song['uri'],
@@ -73,16 +74,17 @@ class Pytifylib:
     # List all. Limit if needed
     def list(self):
         list = []
-        space = '{0:3} | {1:25} | {2:30} | {3:30}'
+        space = '{0:3} | {1:25} | {2:30} | {3:30} | {4:45}'
 
-        list.append(space.format('#', 'Artist', 'Song', 'Album'))
+        list.append(space.format('#', 'Art', 'Song', 'Album','HREF'))
 
         # Just to make it pwitty
         list.append(space.format(
             '-' * 3,
             '-' * 25,
             '-' * 30,
-            '-' * 30
+            '-' * 30,
+            '-' * 45
         ))
 
         for key, song in self.get_songs().items():
@@ -90,7 +92,8 @@ class Pytifylib:
                 '%d.' % key,
                 '%s' % song['artist'],
                 '%s' % song['song'],
-                '%s' % song['album']
+                '%s' % song['album'],
+		'%s' % song['href']
             ))
 
         return list
