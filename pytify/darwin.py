@@ -51,6 +51,11 @@ class Darwin(Pytifylib):
     def pause(self):
         self._make_osascript_call('tell app "Spotify" to pause')
 
+    def play_default(self, uri):
+        self._make_osascript_call(
+            'tell app "Spotify" to play track "%s"' % uri
+        )
+
     def get_current_playing(self):
         instruction = ('on getCurrentTrack()\n'
             ' tell application "Spotify"\n'

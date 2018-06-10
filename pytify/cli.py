@@ -39,6 +39,9 @@ class App:
         parser.add_argument(
             '-c', help='current playing', action='store_true'
         )
+        parser.add_argument(
+            '-start', help='play default song', action='store_true'
+        )
 
         args = parser.parse_args()
 
@@ -56,6 +59,9 @@ class App:
 
         elif args.c:
             print(self.pytify.get_current_playing())
+
+        elif args.start:
+            print(self.pytify.play_default("spotify:playlist:37i9dQZEVXcKC06X3SvgCz"))
 
         else:
             self.interaction()

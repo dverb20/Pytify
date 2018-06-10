@@ -25,6 +25,9 @@ class Linux(Pytifylib):
     def play_pause(self):
         self.interface.PlayPause()
 
+    def play_default(self, uri):
+        self.interface.openUri(uri)
+
     def pause(self):
         self.interface.Stop()
 
